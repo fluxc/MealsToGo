@@ -8,7 +8,11 @@ export const Icon = styled.Image`
 
 export const RestaurantCard = styled(Card)`
 	background-color: ${(props) => props.theme.colors.bg.primary};
-	border-radius: ${(props) => (props.border ? '8px' : '0px')};
+	border-radius: ${(props) => (props.border ? '8px' : '4px')};
+	width: 95%;
+	align-self: center;
+	margin-top:8px;
+	margin-bottom:8px;
 `;
 export const RestaurantCardCover = styled(Card.Cover)`
 	padding: ${(props) => props.theme.space[3]};

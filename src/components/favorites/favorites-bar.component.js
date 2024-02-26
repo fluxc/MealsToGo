@@ -1,12 +1,16 @@
-import react from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Spacer } from '../spacer/spacer.component';
 import { ComponentRestaurantInfo } from '../restaurant/compact-restaurant-info.component';
 import { Text } from '../typography/text.component';
+import { Card } from 'react-native-paper';
 
-const FavoritesWrapper = styled.View`
+const FavoritesWrapper = styled(Card)`
+	z-index: 999999;
 	padding: 10px;
+	border-radius:15px;
+	margin:10px
 `;
 
 export const FavoriteBar = ({ favorites, onNavigate }) => {
@@ -14,7 +18,7 @@ export const FavoriteBar = ({ favorites, onNavigate }) => {
 		return null;
 	}
 	return (
-		<FavoritesWrapper>
+		<FavoritesWrapper elevation={3}>
 			<Spacer variant="left.large">
 				<Text variant="caption">Favorites</Text>
 			</Spacer>

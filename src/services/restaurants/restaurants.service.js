@@ -1,21 +1,15 @@
 import camelize from 'camelize';
-import { mockImages, mocks } from './mock';
-
+import { isMock, urlEndpoint } from '../../utils/env';
 export const restaurantsRequest = (location = '37.7749295,-122.4194155') => {
-	return new Promise((resolve, reject) => {
-		const mock = mocks[location];
-		if (!mock) {
-			reject('not found');
-		}
-		resolve(mock);
+	const url = urlEndpoint('placesNearBy');
+	return fetch(`${url}?location=${location}&mock=${isMock}`).then((res) => {
+		return res.json();
 	});
 };
 
 export const restaurantsTransform = ({ results = [] }) => {
+	console.log('Restaurants', results);
 	const mappedResults = results.map((restaurant) => {
-		restaurant.photos = restaurant.photos.map((p) => {
-			return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
-		});
 		return {
 			...restaurant,
 			address: restaurant.vicinity,
